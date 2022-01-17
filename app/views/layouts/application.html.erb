@@ -13,11 +13,11 @@
 
     <!--ロゴ-->
 
-    <a class="logo" href="/"><%= image_tag('logoimage') %></a>
+    <!--<a class="logo" href="/"><#%= image_tag('logoimage') %></a>-->
 
     <!--cutomerログイン状態-->
 
-    <% if customer_signed_in? %>
+    <!--<#% if customer_signed_in? %>-->
 
       <%= link_to 'マイページ' , class: "btn btn-light" %>
       <%= link_to '商品一覧' , class: "btn btn-light" %>
@@ -26,7 +26,7 @@
 
     <!--adminログイン状態-->
 
-    <% elsif admin_signed_in? %>
+    <!--<#% elsif admin_signed_in? %>-->
 
       <%= link_to '商品一覧' , class: "btn btn-light" %>
       <%= link_to '会員一覧' , class: "btn btn-light" %>
@@ -36,14 +36,14 @@
 
     <!--ログアウト状態-->
 
-    <% else %>
+    <!--<#% else %>-->
 
       <%= link_to 'About' , class: "btn btn-light" %>
       <%= link_to '商品一覧' , class: "btn btn-light" %>
       <%= link_to '新規登録' , class: "btn btn-light" %>
       <%= link_to 'ログイン' , class: "btn btn-light" %>
 
-    <% end %>
+    <!--<#% end %>-->
 
     <!--できれば検索窓もつける-->
 
