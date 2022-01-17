@@ -8,8 +8,53 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  
+  <header>
+    
+    <!--ロゴ-->
+    
+    <a class="logo" href="/"><%= image_tag('logoimage') %></a>
+    
+    <!--cutomerログイン状態-->
+    
+    <% if customer_signed_in? %>
+    
+      <%= link_to 'マイページ' , type="button" class="btn btn-light" %>
+      <%= link_to '商品一覧' , type="button" class="btn btn-light" %>
+      <%= link_to 'カート' , type="button" class="btn btn-light" %>
+      <%= link_to 'ログアウト' , type="button" class="btn btn-light" %>
+    
+    <!--adminログイン状態-->
+    
+    <% elsif admin_signed_in? %>
+    
+      <%= link_to '商品一覧' , type="button" class="btn btn-light" %>
+      <%= link_to '会員一覧' , type="button" class="btn btn-light" %>
+      <%= link_to '注文履歴一覧' , type="button" class="btn btn-light" %>
+      <%= link_to 'ジャンル一覧' , type="button" class="btn btn-light" %>
+      <%= link_to 'ログアウト' , type="button" class="btn btn-light" %>
+    
+    <!--ログアウト状態-->
+    
+    <% else %>
+
+      <%= link_to 'About' , type="button" class="btn btn-light" %>
+      <%= link_to '商品一覧' , type="button" class="btn btn-light" %>
+      <%= link_to '新規登録' , type="button" class="btn btn-light" %>
+      <%= link_to 'ログイン' , type="button" class="btn btn-light" %>
+      
+    <% end %>
+    
+    <!--できれば検索窓もつける-->
+    
+  </header>
 
   <body>
     <%= yield %>
   </body>
+  
+  <footer>
+    
+  </footer>
+  
 </html>
