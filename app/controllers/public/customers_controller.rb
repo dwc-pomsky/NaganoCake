@@ -16,5 +16,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
+    @customer = current_customer
+    @customer.is_deleted = true
+    @customer.save
+    redirect_to customers_mypage_path
   end
 end
