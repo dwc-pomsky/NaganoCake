@@ -4,5 +4,9 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   get 'admin' => 'admin/homes#top'
+
+  namespace :admin do
+    resources :items
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
