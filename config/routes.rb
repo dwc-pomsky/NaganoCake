@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/home/about' => 'public/homes#about'
 
   get '/items' => 'items#index'
+
   get '/items/:id' => 'items#show'
 
   get '/admin/customers' => 'admin/customers#index'
