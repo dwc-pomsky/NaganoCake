@@ -1,13 +1,13 @@
 class Admin::CustomersController < ApplicationController
-  
+
   def index
     @customers = Customer.all
   end
-  
-  def show 
+
+  def show
     @customer = Customer.find(params[:id])
   end
-  
+
   def edit
     @customer = Customer.find(params[:id])
   end
@@ -19,9 +19,9 @@ class Admin::CustomersController < ApplicationController
       render
     end
   end
-  
+
   private
-  
+
   def customer_params
     params.require(:customer).permit(:id, :fullname , :email , :is_deleted)
   end
