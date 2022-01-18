@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'admin' => 'admin/homes#top'
 
   get '/items' => 'items#index'
+
   get '/items/:id' => 'items#show'
 
   get '/admin/customers' => 'admin/customers#index'
