@@ -6,6 +6,14 @@ Rails.application.routes.draw do
   }
   get 'admin' => 'admin/homes#top'
 
+  get '/items' => 'items#index'
+  get '/items/:id' => 'items#show'
+
+  get '/admin/customers' => 'admin/customers#index'
+  get '/admin/customers/:id' => 'admin/customers#show'
+  get '/admin/customers/:id/edit' => 'admin/customers#edit'
+  patch '/admin/customers/:id' => 'admin/customers#update'
+
   namespace :admin do
     resources :items
     resources :genres, only: [:index, :create, :edit, :update]
