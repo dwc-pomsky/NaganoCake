@@ -1,0 +1,37 @@
+<h2>マイページ</h2>
+<%= link_to 'ログアウト用ボタン', destroy_customer_session_path, method: :delete,class: '' %>
+<h3>登録情報</h3>
+<%= link_to '編集する', edit_customer_registration_path, class: ''%>
+<table>
+  <tr>
+    <td>氏名</td>
+    <td><%= current_customer.last_name %> <%= current_customer.first_name %></td>
+  </tr>
+  <tr>
+    <td>カナ</td>
+    <td><%= current_customer.kana_last_name %> <%= current_customer.kana_first_name %></td>
+  </tr>
+  <tr>
+    <td>郵便番号</td>
+    <td><%= current_customer.post_code %></td>
+  </tr>
+  <tr>
+    <td>住所</td>
+    <td><%= current_customer.address %></td>
+  </tr>
+  <tr>
+    <td>電話番号</td>
+    <td><%= current_customer.telephone %></td>
+  </tr>
+  <tr>
+    <td>メールアドレス</td>
+    <td><%= current_customer.email %></td>
+  </tr>
+  <tr>
+    <td>退会済みフラグ(確認用。後ほど削除します。)</td><%#TODO-後に削除%>
+    <td><%= current_customer.is_deleted %></td>
+  </tr>
+      
+</table>
+<h3>配送先</h3>
+<h3>注文履歴</h3>
