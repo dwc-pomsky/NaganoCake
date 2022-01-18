@@ -15,36 +15,26 @@
 
     <!--<a class="logo" href="/"><#%= image_tag('logoimage') %></a>-->
 
-    <!--cutomerログイン状態-->
-
-    <!--<#% if customer_signed_in? %>-->
-
-      <%= link_to 'マイページ' , class: "btn btn-light" %>
-      <%= link_to '商品一覧' , class: "btn btn-light" %>
-      <%= link_to 'カート' , class: "btn btn-light" %>
-      <%= link_to 'ログアウト' , class: "btn btn-light" %>
-
-    <!--adminログイン状態-->
-
-    <!--<#% elsif admin_signed_in? %>-->
-
-      <%= link_to '商品一覧' , class: "btn btn-light" %>
-      <%= link_to '会員一覧' , class: "btn btn-light" %>
-      <%= link_to '注文履歴一覧' , class: "btn btn-light" %>
-      <%= link_to 'ジャンル一覧' , class: "btn btn-light" %>
-      <%= link_to 'ログアウト' , class: "btn btn-light" %>
-
-    <!--ログアウト状態-->
-
-    <!--<#% else %>-->
-
-      <%= link_to 'About' , class: "btn btn-light" %>
-      <%= link_to '商品一覧' , class: "btn btn-light" %>
-      <%= link_to '新規登録' , class: "btn btn-light" %>
-      <%= link_to 'ログイン' , class: "btn btn-light" %>
-
-    <!--<#% end %>-->
     
+  <ul>
+    <% if customer_signed_in? %><!--cutomerでログインされている-->
+      <li><%= link_to 'マイページ' , customers_mypage_path, class: "btn btn-light" %></li>
+      <li><%= link_to '商品一覧' , root_path, class: "btn btn-light" %></li>
+      <li><%= link_to '!カート' , '#', class: "btn btn-light" %></li>
+      <li><%= link_to 'ログアウト' , destroy_customer_session_path, method: :delete, class: "btn btn-light" %></li>
+    <% elsif admin_signed_in? %><!--adminでログインされている-->
+      <li><%= link_to '商品一覧' , admin_items_path, class: "btn btn-light" %></li>
+      <li><%= link_to '!会員一覧' , '#', class: "btn btn-light" %></li>
+      <li><%= link_to '注文履歴一覧' , admin_path, class: "btn btn-light" %></li>
+      <li><%= link_to 'ジャンル一覧' , admin_genres_path, class: "btn btn-light" %></li>
+      <li><%= link_to 'ログアウト' , destroy_admin_session_path, method: :delete, class: "btn btn-light" %></li>
+    <% else %><!--ログインされていない-->
+      <li><%= link_to 'About' , about_path, class: "btn btn-light" %></li>
+      <li><%= link_to '商品一覧' , root_path, class: "btn btn-light" %></li>
+      <li><%= link_to '新規登録' , new_customer_registration_path, class: "btn btn-light" %></li>
+      <li><%= link_to 'ログイン' , new_customer_session_path, class: "btn btn-light" %></li>
+    <% end %>
+  </ul>
     <!--ログインしてたら、ようこそnameさん表示-->
 
     <!--できれば検索窓もつける-->
