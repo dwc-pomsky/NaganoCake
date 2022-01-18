@@ -1,5 +1,7 @@
 <div align="right">
-  <button class="btn" style="text-align:right;"><%= link_to "商品追加", new_admin_item_path %></button>
+  <button class="btn" style="text-align:right;">
+    <%= link_to "商品追加", new_admin_item_path, class: "fas fa-plus-circle" %>
+  </button>
 </div>
 <div class="row">
   <table align="center" border="1px solid ">
@@ -21,7 +23,7 @@
           <th>ケーキ<%= item.genre.name %></th>
           <th>
             販売中
-            <% if item.sales_status == ture %>
+            <% if item.sales_status == true %>
               <p>販売中</p>
             <% else %>
               <p>販売停止中</p>
