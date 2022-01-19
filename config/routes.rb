@@ -25,11 +25,16 @@ Rails.application.routes.draw do
     sessions: 'public/sessions',
     registrations: 'public/registrations'
   }
+  devise_scope :customer do
+    get '/customers', to: 'public/registrations#new'
+  end
   get 'customers/mypage' => 'public/customers#show'
   get 'customers/unsubscribe' => 'public/customers#unsubscribe'
   patch 'customers/withdraw' => 'public/customers#withdraw'
   root to: 'public/homes#top'
   get '/about' => 'public/homes#about'
+
+  resources :delivery_addresses, module: :public, :except => [:new, :show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
