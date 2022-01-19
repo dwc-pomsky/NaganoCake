@@ -1,4 +1,7 @@
 class Public::CustomersController < ApplicationController
+  #ログインチェックを行う
+  before_action :ensure_correct_customer
+
   def show
   end
 
@@ -26,5 +29,14 @@ class Public::CustomersController < ApplicationController
     @customer.save
     #マイページに戻る
     redirect_to customers_mypage_path
+  end
+
+  private
+  def ensure_correct_customer
+    #current_customerが取得できない場合
+    if current_customer == nil
+      #ログイン画面に飛ばす
+      redirect_to new_customer_session_path
+    end
   end
 end

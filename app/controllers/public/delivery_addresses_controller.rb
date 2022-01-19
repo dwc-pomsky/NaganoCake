@@ -1,4 +1,7 @@
 class Public::DeliveryAddressesController < ApplicationController
+  #ログインチェックを行う
+  before_action :ensure_correct_customer
+  
   def index
     #新規登録用のインスタンス変数
     @new_delivery_address = DeliveryAddress.new
@@ -61,4 +64,11 @@ class Public::DeliveryAddressesController < ApplicationController
     params.require(:delivery_address).permit(:post_code, :address, :name)
   end
 
+  def ensure_correct_customer
+    #current_customerが取得できない場合
+    if current_customer == nil
+      #ログイン画面に飛ばす
+      redirect_to new_customer_session_path
+    end
+  end
 end
