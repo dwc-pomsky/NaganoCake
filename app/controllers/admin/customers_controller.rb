@@ -14,16 +14,16 @@ class Admin::CustomersController < ApplicationController
 
   def update
     if @customer.update(customer_params)
-      redirect_to customer_path
+      redirect_to admin_customer_path(@customer.id)
     else
-      render
+      render :edit
     end
   end
 
   private
 
   def customer_params
-    params.require(:customer).permit(:id, :fullname , :email , :is_deleted)
+    params.require(:customer).permit(:id, :name , :email , :is_deleted , :last_name , :first_name , :kana_last_name , :kana_first_name , :post_code , :address , :telephone , :email , :is_deleted)
   end
 
 end

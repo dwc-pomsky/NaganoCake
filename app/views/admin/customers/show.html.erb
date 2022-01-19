@@ -1,4 +1,4 @@
-<h1><%= customer.name %>さんの会員詳細</h1>
+<h2><%= @customer.last_name %> <%= @customer.first_name %> さんの会員詳細</h2>
 
 <table>
   <thead>
@@ -15,14 +15,19 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= customer.id %></td>
-      <td><%= customer.last_name %> <#%= customer.first_name %></td>
-      <td><%= customer.kana_last_name %> <#%= customer.kana_first_name %></td>
-      <td><%= customer.post_code %></td>
-      <td><%= customer.address %></td>
-      <td><%= customer.telephone %></td>
-      <td><%= customer.email %></td>
-      <td><%= customer.is_deleted %></td>
+      <td><%= @customer.id %></td>
+      <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+      <td><%= @customer.kana_last_name %> <%= @customer.kana_first_name %></td>
+      <td><%= @customer.post_code %></td>
+      <td><%= @customer.address %></td>
+      <td><%= @customer.telephone %></td>
+      <td><%= @customer.email %></td>
+      <td><%= @customer.is_deleted %></td>
+    </tr>
+    <tr>
+      <td><%= link_to 'Edit', edit_admin_customer_path(@customer), class: "btn btn-success edit_customer_#{@customer.id}" %></td>
+      <!--とりあえずのボタン、今はEditに飛びます-->
+      <td><%= link_to '注文履歴一覧を見る', edit_admin_customer_path(@customer), class: "btn btn-primary edit_customer_#{@customer.id}" %></td>
     </tr>
   </tbody>
 </table>

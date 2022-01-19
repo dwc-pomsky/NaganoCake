@@ -1,4 +1,4 @@
-<h1><%= customer.fullname %>さんの会員情報編集</h1>
+<h2><%= @customer.last_name %> <%= @customer.first_name %> さんの会員情報編集</h2>
 
 <table>
   <thead>
@@ -15,7 +15,7 @@
   </thead>
   <tbody>
     <tr>
-      <%= form_with model: customer,local:true do |f| %>
+      <%= form_with model: Customer,local:true do |f| %>
 
         <td>
           <div class="form">
@@ -73,7 +73,7 @@
           <%= f.label :"退会" %>
         </td>
           <div class="form">
-           <%= f.submit class: 'btn btn-success' %>
+           <%= f.submit '変更を保存' , class: 'btn btn-success' %>
           </div>
 
       <% end %>
