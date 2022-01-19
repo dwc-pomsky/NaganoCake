@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     sessions: 'public/sessions',
     registrations: 'public/registrations'
   }
+  devise_scope :customer do
+    get '/customers', to: 'public/registrations#new'
+  end
   get 'customers/mypage' => 'public/customers#show'
   get 'customers/unsubscribe' => 'public/customers#unsubscribe'
   patch 'customers/withdraw' => 'public/customers#withdraw'
