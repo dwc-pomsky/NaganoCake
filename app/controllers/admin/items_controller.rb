@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @items = Item.all
   end
@@ -28,7 +28,7 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    if @item.update(book_params)
+    if @item.update(item_params)
       redirect_to admin_item_path(@item.id), notice: "商品情報を更新しました"
     else
       render :edit
@@ -38,7 +38,7 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :introduction, :image_id, :price, :sales_status, :genre_id)
+    params.require(:item).permit(:name, :introduction, :image, :price, :sales_status, :genre_id)
   end
 
 end

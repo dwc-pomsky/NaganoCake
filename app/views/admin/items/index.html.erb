@@ -1,36 +1,36 @@
-<div align="right">
-  <button class="btn" style="text-align:right;">
-    <%= link_to "商品追加", new_admin_item_path, class: "fas fa-plus-circle" %>
-  </button>
-</div>
-<div class="row">
-  <table align="center" border="1px solid ">
-    <thead>
-      <tr>
-        <th>商品ID</th>
-        <th>商品名</th>
-        <th>税抜価格</th>
-        <th>ジャンル</th>
-        <th>ステータス</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @items.each do |item| %>
+
+  <div align="right">
+    <button class="btn" style="text-align:right;">
+      <%= link_to "商品追加", new_admin_item_path, class: "btn btn-success" %>
+    </button>
+  </div>
+  <div>
+    <table align="center" border="1px solid ">
+      <thead>
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
         <tr>
           <th><%= item.id %></th>
-          <th>洋梨のチーズタルト<%= item.name %></th>
-          <th>1,200<%= item.price %></th>
-          <th>ケーキ<%= item.genre.name %></th>
+          <th><%= link_to item.name, admin_item_path(item.id) %></th>
+          <th><%= item.price %></th>
+          <th><%= item.genre.name %></th>
           <th>
-            販売中
             <% if item.sales_status == true %>
-              <p>販売中</p>
+              販売中
             <% else %>
-              <p>販売停止中</p>
+            　販売停止中
             <% end %>
           </th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
