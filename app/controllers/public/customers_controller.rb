@@ -23,12 +23,14 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
+    #ログイン中のユーザーを取得
     @customer = current_customer
-    #退会フラグをtrueにして保存
-    @customer.is_deleted = true
-    @customer.save
+    #退会フラグをtrueにして更新
+    @customer.update(is_deleted: true)
+    #セッション情報を削除する
+    reset_session
     #マイページに戻る
-    redirect_to customers_mypage_path
+    redirect_to root_path
   end
 
   private
