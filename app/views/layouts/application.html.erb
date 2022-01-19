@@ -49,14 +49,18 @@
 
     <!--ログインしてたら、ようこそnameさん表示-->
 
+    <% if customer_signed_in? %>
+      <p class="header-comment">
+        <span>さん、ようこそ！</span>
+      </p>
+    <% end %>
+
     <!--できれば検索窓もつける-->
 
   </header>
 
-
-    <%= yield %>
   </body>
-
+   <%= yield %>
   <footer>
 
   </footer>
