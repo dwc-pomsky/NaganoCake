@@ -1,34 +1,38 @@
-<h2 style="position:relative; top:10px; left:200px;">商品編集</h2>
+<div class="container">
+  <h2>商品編集</h2>
 
-<div class="row">
-  <%= form_with model: @item, url: admin_item_path,method: :patch, local:true do |f| %>
-  <div class="form-group">
-        <%= f.label :"商品画像" %>
-        <!--%= f.attachment_field :image, class: "form-control-file user_image" %>-->
-      </div>
-  <div class="form-group">
-    <%= f.label :"商品名", class: 'item_name' %>
-    <%= f.text_field :name, class: 'form-control item_name' %>
+  <div class="row justify-content-center">
+    <%= form_with model: @item, url: admin_item_path,method: :patch, local:true do |f| %>
+    <div class="form-group">
+          <%= f.label :"商品画像" %>
+          <%= f.attachment_field :image, class: "form-control-file item_image" %>
+        </div>
+    <div class="form-group">
+      <%= f.label :"商品名", class: 'item_name' %>
+      <%= f.text_field :name, class: 'form-control item_name' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"商品説明", class: 'item_introduction' %>
+      <%= f.text_area :introduction, class: 'form-control item_introduction' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"ジャンル", class: 'item_genre' %>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "-- 選択して下さい --", class: 'form-control item_genre' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"税抜価格", class: 'item_price' %>
+      <%= f.text_field :price, class: 'form-control item_price' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"販売ステータス", class: 'item_sales_status' %>
+      <%= f.radio_button :sales_status, true, class: 'form-control item_sales_status' %>
+      <%= f.label :"販売中" %>
+      <%= f.radio_button :sales_status, false, class: 'form-control item_sales_status' %>
+      <%= f.label :"販売停止中" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "変更を保存",class: 'btn btn-success' %>
+    </div>
+  <% end %>
   </div>
-  <div class="form-group">
-    <%= f.label :"商品説明", class: 'item_introduction' %>
-    <%= f.text_area :introduction, class: 'form-control item_introduction' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :"ジャンル", class: 'item_genre' %>
-    <!-- %= f.selet(:genre_id, Genre.all.name {|genre| [genre.name} class: 'form-control item_genre' %>-->
-  </div>
-  <div class="form-group">
-    <%= f.label :"税抜価格", class: 'item_price' %>
-    <%= f.text_field :price, class: 'form-control item_price' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :"販売ステータス", class: 'item_sales_status' %>
-    <!-- %= f.radio_button :sales_status, :'販売中',true, class: 'form-control item_sales_status' %>-->
-    <!-- %= f.radio_button :sales_status, :'販売停止中',false, class: 'form-control item_sales_status' %>-->
-  </div>
-  <div class="form-group">
-    <%= f.submit "変更を保存",class: 'btn btn-success' %>
-  </div>
-<% end %>
 </div>
