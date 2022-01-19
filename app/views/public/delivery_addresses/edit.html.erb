@@ -1,0 +1,22 @@
+<h2>配送先編集</h2>
+<%= form_with model:@delivery_address do |f| %>
+  <div>
+    <%= f.label :post_code %>
+    <%= f.text_field :post_code %>
+  </div>
+
+  <div>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>

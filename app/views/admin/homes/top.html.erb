@@ -1,4 +1,4 @@
-
+<%= link_to "ログアウト", destroy_admin_session_path,method: :delete %>
 <h2 style="position:relative; top:10px; left:200px;">注文履歴一覧</h2>
 
   <table align="center" border="1px solid ">
@@ -10,12 +10,14 @@
     </tr>
     <tr>
       <th>(例)2022/01/17 12:00</th>
-      <th>Pomsky</th>
-      <th>3</th>
-      <th>入金待ち</th>
+      <th>(例)Pomsky</th>
+      <th>(例)3</th>
+      <th>(例)入金待ち</th>
     </tr>
   </table>
 </div>
+
+<!-- ページネーション追加後、以下記述は消します -->
 <div align="center">
   <td>1</td>
   <td>2</td>
