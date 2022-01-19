@@ -12,15 +12,15 @@
     </tr>
   </thead>
   <tbody>
-    <!--<#%= customers.each do |customer| %>-->
+    <%= customers.each do |customer| %>
       <tr>
-        <!--<td><#%= customer.id %></td>-->
-        <!--<td><#%= customer.fullname %></td>-->
-        <!--<td><#%= customer.email %></td>-->
-        <!--<td><#%= customer.is_deleted %></td>-->
+        <td><%= customer.id %></td>
+        <td><%= customer.fullname %></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.is_deleted %></td>
       </tr>
-    <!--<# end %>-->
+    <% end %>
     
-    <!--ここでpaginateの設定(kaminari)-->
+    
   </tbody>
 </table>
