@@ -1,6 +1,8 @@
 <h2><%= @customer.last_name %> <%= @customer.first_name %> さんの会員情報編集</h2>
-
+<%# モデルにインスタンス変数を指定するだけではコントローラーをうまく認識してくれないため、url・method:のオプションを利用する %>
+<%#url:→どのコントローラーのどのアクションを使うか method:→どのメソッドを使うか%>
 <%= form_with model:@customer, url: admin_customer_path, method: :PATCH, local: true do |f| %>
+
 <div class="field">
     <%= f.label :last_name %>
     <%= f.text_field :last_name %>
@@ -30,6 +32,13 @@
     <%= f.text_field :telephone %>
   </div>
 
+  <div class="field">
+    <%= f.label :telephone %>
+    <%= f.text_field :telephone %>
+  </div>
+
+  <div class="field">
+  </div>
 
   <div class="actions">
     <%= f.submit "Update" %>
