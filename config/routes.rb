@@ -22,10 +22,10 @@ Rails.application.routes.draw do
 
 # ↓namespac admin resourcesで下記に書いているため不要と思いコメントアウトしました。不要と確定すれば消去します。
 
-  # get '/admin/customers' => 'admin/customers#index'
-  # get '/admin/customers/:id' => 'admin/customers#show'
-  # get '/admin/customers/:id/edit' => 'admin/customers#edit'
-  # patch '/admin/customers/:id' => 'admin/customers#update'
+  get '/admin/customers' => 'admin/customers#index'
+  get '/admin/customers/:id' => 'admin/customers#show'
+  get '/admin/customers/:id/edit' => 'admin/customers#edit'
+  patch '/admin/customers/:id' => 'admin/customers#update'
 
   namespace :admin do
     resources :items
