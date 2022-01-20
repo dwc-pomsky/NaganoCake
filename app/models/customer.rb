@@ -8,4 +8,6 @@ class Customer < ApplicationRecord
             :post_code, :address, :telephone, presence: true
   validates :email, uniqueness: true
   has_many :delivery_addresses, dependent: :destroy
+  has_one :cart_items
+
 end

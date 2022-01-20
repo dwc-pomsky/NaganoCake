@@ -6,14 +6,26 @@ Rails.application.routes.draw do
   }
   get 'admin' => 'admin/homes#top'
 
-  get '/items' => 'items#index'
+# ↓下記でscope items resourcesの記述を追加したため不要と思いコメントアウトしました。不要と確定すれば消去します。
 
-  get '/items/:id' => 'items#show'
+  # get '/items' => 'items#index'
+  # get '/items/:id' => 'items#show'
+  
+  resources :items, only: [:index,:show] do
+   scope module: :items do
+      resources :add_to_carts, only: [:create]
+      resources :delete_in_carts, only: [:create]
+   end
+  end
+  
+  resource :cart_item, only: [:show]
 
-  get '/admin/customers' => 'admin/customers#index'
-  get '/admin/customers/:id' => 'admin/customers#show'
-  get '/admin/customers/:id/edit' => 'admin/customers#edit'
-  patch '/admin/customers/:id' => 'admin/customers#update'
+# ↓namespac admin resourcesで下記に書いているため不要と思いコメントアウトしました。不要と確定すれば消去します。
+
+  # get '/admin/customers' => 'admin/customers#index'
+  # get '/admin/customers/:id' => 'admin/customers#show'
+  # get '/admin/customers/:id/edit' => 'admin/customers#edit'
+  # patch '/admin/customers/:id' => 'admin/customers#update'
 
   namespace :admin do
     resources :items
