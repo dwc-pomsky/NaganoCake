@@ -6,14 +6,9 @@ Rails.application.routes.draw do
   }
   get 'admin' => 'admin/homes#top'
 
-# ↓下記でscope items resourcesの記述を追加したため不要と思いコメントアウトしました。不要と確定すれば消去します。
+  get '/items' => 'items#index'
 
-  get '/items' => 'public/items#index'
-  get '/items/:id' => 'public/items#show'
-  
-  resources :items, only: [:index,:show]
-
-# ↓namespac admin resourcesで下記に書いているため不要と思いコメントアウトしました。不要と確定すれば消去します。
+  get '/items/:id' => 'items#show'
 
   get '/admin/customers' => 'admin/customers#index'
   get '/admin/customers/:id' => 'admin/customers#show'
