@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :items
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :order_items, only: [:update]
+    resources :order, only:[:show, :update]
   end
 
 

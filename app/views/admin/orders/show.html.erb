@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="row">
+    <h2>注文履歴詳細</h2>
+  </div>
+  <div class="row">
+    <div class="col">
+      <tbody>
+        <table>
+          <tr>
+            <td>購入者</td>
+            <td><%= @order.last_name %> <%= @order.first_name %></td>
+          </tr>
+
+          <tr>
+            <td>注文日</td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+
+          <tr>
+            <td>配送先</td>
+            <td>
+              〒<%= @order.delivery_postcode %>
+              <%= @order.delivery_addresses %><br>
+              <%= @order.delivery_name %>
+            </td>
+          </tr>
+
+          <tr>
+            <td>支払い方法</td>
+            <td><%= @order.payment %></td>
+          </tr>
+
+          <tr>
+            <td>注文ステータス</td>
+            <td>
+              <%= form_with model: @order, url: admin_order_path(@order), method: :patch do |f| %>
+              <!-- f.select :プロパティ名, options_from_collection_for_select(モデル, :フォームで送る値(メソッド), :セレクトボックスに表示する値(メソッド)) -->
+                <%= f.select :order_status, options_from_collection_for_select(Oder.all, :id, :order_status) %>
+                <%= f.submit "更新", class: "btn btn-success" %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      </tbody>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table>
+
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @order_items.each do |order_item| %>
+            <tr>
+              <td><%= order_item.item.name %></td>
+              <td><%= add_tax_price(order_item.item.price) %></td>
+              <td><%= order_item.quantity %></td>
+              <td><%= order_item.purchase %></td>
+
+              <%= form_with model: order_item, admin_order_item_path(order_item),method: :patch do |f| %>
+                <td><%= f.select :production_status, options_from_collection_for_select(OrderItem.all, :id, :production_status) %></td>
+                <td><%= f.submit "更新" %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <table>
+        <tbody>
+          <tr>
+            <td>商品合計</td>
+            <td><%= @order_items.purchase %></td>
+          </tr>
+          <tr>
+            <td>送料</td>
+            <td><%= @order.shipping_fee %></td>
+          </tr>
+          <tr>
+            <td>請求合計金額</td>
+            <td><%= @order.total_price %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
