@@ -12,4 +12,5 @@ class Customer < ApplicationRecord
 
   #customerがcart_itemの所有者
   has_many :cart_item, dependent: :destroy
+  has_many :order, dependent: :destroy
 end
