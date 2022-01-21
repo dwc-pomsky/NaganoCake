@@ -11,14 +11,7 @@ Rails.application.routes.draw do
   # get '/items' => 'items#index'
   # get '/items/:id' => 'items#show'
   
-  resources :items, only: [:index,:show] do
-   scope module: :items do
-      resources :add_to_carts, only: [:create]
-      resources :delete_in_carts, only: [:create]
-   end
-  end
-  
-  resource :cart_item, only: [:show]
+  resources :items, only: [:index,:show]
 
 # ↓namespac admin resourcesで下記に書いているため不要と思いコメントアウトしました。不要と確定すれば消去します。
 
@@ -47,6 +40,7 @@ Rails.application.routes.draw do
   get '/about' => 'public/homes#about'
 
   resources :delivery_addresses, module: :public, :except => [:new, :show]
+  resources :cart_items, module: :public, :except => [:new, :show, :edit]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

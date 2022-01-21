@@ -11,4 +11,6 @@ class Item < ApplicationRecord
   def add_tax_price
         (self.price * 1.10).round
   end
+  #itemがcart_itemの所有者
+  has_many :cart_item, dependent: :destroy
 end
