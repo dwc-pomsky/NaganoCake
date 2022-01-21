@@ -4,3 +4,6 @@
 #         [カラム名]:
 #           [enumで番号と紐付けた要素]
 #           [enumで番号と紐付けた要素]: 要素の数だけ追加する
+ja:
+  activerecord:
+    attributes:
