@@ -1,13 +1,18 @@
 <div class="container">
   <div class="row">
-    <h2>ジャンル一覧・追加</h2>
+    <h3 class="m-5 bg-light px-4">ジャンル編集</h3>
   </div>
 
-  <div class="row">
-    <%= form_with model: @genre, url: admin_genre_path(@genre.id),method: :patch, local: true do |f| %>
-      <%= f.label :"ジャンル名" %>
-      <%= f.text_field :name %>
-      <%= f.submit "変更を保存",class: 'btn btn-success' %>
-    <% end %>
-  </div>
+  <%= form_with model: @genre, url: admin_genre_path(@genre.id),method: :patch, local: true do |f| %>
+    <div class="row form_group">
+      <%= f.label :"ジャンル名", class: "col-auto col-form-label" %>
+      <div class="col-auto align-self-center"><%= f.text_field :name %></div>
+      <div class="col-atuo"><%= f.submit "変更を保存",class: 'btn btn-success bt-lg' %></div>
+    </div>
+  <% end %>
 </div>
+<!--<div class="row">-->
+<!--  <div class="main-visual">-->
+<!--    <div class="main-visual-text">test</div>-->
+<!--  </div>-->
+<!--</div>-->
