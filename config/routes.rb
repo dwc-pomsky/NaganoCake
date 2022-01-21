@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
 # ↓下記でscope items resourcesの記述を追加したため不要と思いコメントアウトしました。不要と確定すれば消去します。
 
-  # get '/items' => 'items#index'
-  # get '/items/:id' => 'items#show'
+  get '/items' => 'public/items#index'
+  get '/items/:id' => 'public/items#show'
   
   resources :items, only: [:index,:show]
 
@@ -40,7 +40,11 @@ Rails.application.routes.draw do
   get '/about' => 'public/homes#about'
 
   resources :delivery_addresses, module: :public, :except => [:new, :show]
-  resources :cart_items, module: :public, :except => [:new, :show, :edit]
+  resources :cart_items, module: :public, :except => [:new, :show, :edit] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
