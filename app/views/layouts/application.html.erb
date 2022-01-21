@@ -16,12 +16,12 @@
 <!--ここで、ディスプレイサイズの指定と背景色の指定-->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
+         <a class="logo" href="/">ながのCAKE<%#= image_tag('logoimage') %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
-            <a class="logo" href="/">ながのCAKE<%#= image_tag('logoimage') %></a>
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %><!--adminでログインされている-->
                 <li><%= link_to '商品一覧' , admin_items_path, class: "btn btn-light" %></li>
