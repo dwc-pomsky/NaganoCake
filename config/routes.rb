@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   }
   get 'admin' => 'admin/homes#top'
 
-  get '/items' => 'items#index'
+  get '/items' => 'public/items#index'
 
-  get '/items/:id' => 'items#show'
+  get '/items/:id' => 'public/items#show'
 
   namespace :admin do
     resources :items

@@ -1,12 +1,21 @@
 <div class='container'>
   <div class='row'>
-    <p>ようこそ、ながのCAKEへ！<br>
-    このサイトは、ケーキ販売のECサイトになります。<br>
-    会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。</p>
+    <div class="main-visual">
+      <div class="main-visual-text">
+        <p>ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。</p>
+      </div>
+    </div>
   </div>
     <!--メインの下に新着商品の紹介(応用課題でやった順番の並び替えを使う？)-->
   <div class="row">
-    <p>商品名</p>
-    <p>¥0,000</p>
+    <% @items.each do |item| %>
+      <p><%= attachment_image_tag(item, :image, :fill, 30, 50) %></p>
+      <p><%= item.name %></p>
+      <p><%= item.price %></p>
+    <% end %>
   </div>
+  <!--後で遷移先を商品一覧に変える-->
+  <p><%= link_to '全ての商品をみる' , items_path %></p>
 </div>
