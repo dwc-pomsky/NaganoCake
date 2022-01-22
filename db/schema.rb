@@ -90,6 +90,16 @@ ActiveRecord::Schema.define(version: 2022_01_21_094154) do
     t.integer "genre_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "item_id"
+    t.integer "price_on_purchase"
+    t.integer "quantity"
+    t.integer "production_status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "customers_id", null: false
     t.integer "shipping_fee", null: false

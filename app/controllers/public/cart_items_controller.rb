@@ -25,7 +25,7 @@ class Public::CartItemsController < ApplicationController
       @cart_items.delete
     else
       #新しくデータを保存する
-      @cart_items.save
+      @cart_items.save!
     end
     redirect_to cart_items_path
   end
