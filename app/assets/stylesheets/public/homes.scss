@@ -4,10 +4,27 @@
 
 .main-visual{
   // 明日、きく
-  background-image:url(images/top-bg-img1.jpg);
-
+  background-image:image-url('top-bg-img1.jpeg');
+  width:1000px;
+  height:360px;
+  background-size:cover;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  background-position:center;
 }
 
 .main-visual-text{
-
+  display:flex;
+  justify-content: center;
+  text-align:center;
+  width:500px;
+  height:250px;
+  background-color:rgba(255,255,255,0.5);
 }
+
+.text{
+  padding-top:100px;
+  font-weight:bold;
+}
+
