@@ -9,20 +9,26 @@
 .item-link {
   // transition: 2s;
   color: gray;
-  
+
   padding: 0 10px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(100, 170, 226) 50%); 
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgba(215, 26, 183,0.22) 50%);
   background-position: 0 0; //0 50ならば下に50%、50 50 ならば右に50%下に50%が初期位置になる
   background-size: 200% auto;
   transition: 0.3s; // transition・・・状態が変わった時に起こす指示
 }
 
 .item-link:hover {
-  // color: blue;
-   background-position: -100% 0;
+  background-position: -100% 0;
   color: #fff;
 }
 
 .pulus-btn {
   padding: 20px;
+}
+
+.item-edit {
+  margin: 50px 20px 20px 150px;
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: #80808047;
 }
