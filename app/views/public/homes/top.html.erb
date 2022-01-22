@@ -9,33 +9,18 @@
       </div>
     </div>
   </div>
-    <!--メインの下に新着商品の紹介(応用課題でやった順番の並び替えを使う？)-->
-   <div class="row mt-4">
-    <h1 class="font-weight-bold">新着商品</h1>
-   </div>
-   <div class="row mt-4">
-    <%# @items.each do |item| %>
+  <div class="row mt-4">
+   <h1 class="font-weight-bold">新着商品</h1>
+  </div>
+  <div class="row mt-4">
+    <% @items.each do |item| %>
      <div class="col">
-      <p><%= image_tag('top-bg-img1.jpeg' , size: '250x125') %><%#= attachment_image_tag(item, :image, :fill, 30, 50) %></p>
-      <p class="font-weight-bold">商品名<%#= item.name %></p>
-      <p class="font-weight-bold">￥300<%#= item.price %></p>
+      <!--画像が表示されない-->
+      <p><%= attachment_image_tag item, :image, :fill, 250, 125, format:'jpeg' %></p>
+      <p class="font-weight-bold"><%= item.name %></p>
+      <p class="font-weight-bold">¥<%= item.price %></p>
      </div>
-     <div class="col">
-      <p><%= image_tag('top-bg-img1.jpeg' , size: '250x125') %></p>
-      <p>商品名</p>
-      <p>￥300</p>
-     </div>
-     <div class="col">
-      <p><%= image_tag('top-bg-img1.jpeg' , size: '250x125') %></p>
-      <p>商品名</p>
-      <p>￥300</p>
-     </div>
-     <div class="col">
-      <p><%= image_tag('top-bg-img1.jpeg' , size: '250x125') %></p>
-      <p>商品名</p>
-      <p>￥300</p>
-     </div>
-    <%# end %>
+    <% end %>
   </div>
   <!--後で遷移先を商品一覧に変える-->
   <p class="text-right h4"><%= link_to '全ての商品をみる >' , items_path %></p>
