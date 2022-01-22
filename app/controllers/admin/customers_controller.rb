@@ -1,5 +1,5 @@
 class Admin::CustomersController < ApplicationController
-
+  
   def index
     #カスタマー一覧用の情報を取得する
     @customers = Customer.page(params[:page]).reverse_order
