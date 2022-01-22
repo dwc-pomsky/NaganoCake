@@ -3,34 +3,34 @@
     <h2>商品新規登録</h2>
   </div>
 
-  <div class="row">
+  <div class="row justify-content-center">
     <%= form_with model: @item, url: admin_items_path,method: :post, local: true do |f| %>
-    <div class="form-group">
-          <%= f.label :"商品画像" %>
-          <%= f.attachment_field :image, class: "form-control-file user_image" %>
+    <div class="form-group row">
+          <%= f.label :"商品画像", class: "col-form-label"%>
+          <div class="col-auto"><%= f.attachment_field :image, class: "form-control-file" %></div>
         </div>
     <div class="form-group">
-      <%= f.label :"商品名", class: 'item_name' %>
-      <%= f.text_field :name, class: 'form-control item_name' %>
+      <%= f.label :"商品名", class: 'col-form-label' %>
+      <div class="col"><%= f.text_field :name, class: 'form-control' %></div>
     </div>
     <div class="form-group">
-      <%= f.label :"商品説明", class: 'item_introduction' %>
-      <%= f.text_area :introduction, class: 'form-control item_introduction' %>
+      <%= f.label :"商品説明", class: 'col-form-label' %>
+      <div class="col"><%= f.text_area :introduction, class: 'form-control' %></div>
     </div>
     <div class="form-group">
-      <%= f.label :"ジャンル", class: 'item_genre' %>
-      <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "-- 選択して下さい --", class: 'form-control item_genre' %>
+      <%= f.label :"ジャンル", class: 'col-form-label' %>
+      <div class="col"><%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "-- 選択して下さい --", class: 'form-control' %></div>
     </div>
     <div class="form-group">
-      <%= f.label :"税抜価格", class: 'item_price' %>
-      <%= f.text_field :price, class: 'form-control item_price' %>
+      <%= f.label :"税抜価格", class: 'col-form-label' %>
+      <div class="col"><%= f.text_field :price, class: 'form-control item_price' %></div>
     </div>
     <div class="form-group">
-      <%= f.label :"販売ステータス", class: 'item_sales_status' %>
+      <%= f.label :"販売ステータス", class: '' %>
        <%= f.radio_button :sales_status, true, class: 'form-control item_sales_status' %>
-       <%= f.label :"販売中" %>
+       <div class="col"><%= f.label :"販売中" %></div>
        <%= f.radio_button :sales_status, false, class: 'form-control item_sales_status' %>
-       <%= f.label :"販売停止中" %>
+       <div class="col"><%= f.label :"販売停止中" %></div>
     </div>
     <div class="form-group">
       <%= f.submit "新規登録",class: 'btn btn-success' %>
