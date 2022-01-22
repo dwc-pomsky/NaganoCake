@@ -9,3 +9,9 @@ Admin.create!(
   email: 'test@test.com',
   password: 'testpass',
   )
+
+CartItem.create!(
+  item_id: '1',
+  customer_id: '1',
+  amount: '1'
+)

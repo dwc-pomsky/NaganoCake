@@ -1,12 +1,26 @@
-<!--部分テンプレートの呼び出し(サイドバー)-->
+<div class="container">
+  <div class='form-group row'>
+    <%= attachment_image_tag @item,:image,:fill, 304, 171, format: 'jpeg' %>
 
-<!--<#%= @item.item.name %>-->
-<!--<#%= @item.item.introduction %>-->
-
-<!--￥<#%= @product.add_tax_price.to_s(:delimited) %>(税込)-->
-
-
-<!--<#%= f.hidden_field :amount, value: "商品個数" %>-->
-<!--<#%= f.select :amount, *[1..10] %>-->
-
-<!--<#%= link_to 'カートに入れる' , class: "btn btn-success" %>-->
+    <div class='col'>
+      <h3>
+        <%= @item.name %>
+      </h3>
+      <p>
+        <%= @item.introduction %>
+      </p>
+      <p></p>
+        <strong class='h4'>
+          ¥ <%= @item.price %>
+        </strong>
+        (税込)
+      </p>
+      <%= form_with model:@cart_items, local: true do |f|  %>
+        <% f.hidden_field :item_id, value: @item.id %>
+        <% f.hidden_field :customer_id, value: current_customer.id %>
+        <%= f.select :amount, *[1..10] %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
