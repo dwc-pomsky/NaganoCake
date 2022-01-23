@@ -30,8 +30,9 @@
                 <li><%= link_to 'ジャンル一覧' , admin_genres_path, class: "btn btn-light" %></li>
                 <li><%= link_to 'ログアウト' , destroy_admin_session_path, method: :delete, class: "btn btn-light" %></li>
               <% elsif customer_signed_in? %><!--cutomerでログインされている-->
+                <li class="welcome-text">ようこそ、<%= current_customer.last_name %>さん！</li>
                 <li><%= link_to 'マイページ' , customers_mypage_path, class: "btn btn-light" %></li>
-                <li><%= link_to '商品一覧' , root_path, class: "btn btn-light" %></li>
+                <li><%= link_to '商品一覧' , items_path, class: "btn btn-light" %></li>
                 <li><%= link_to '!カート' , '#', class: "btn btn-light" %></li>
                 <li><%= link_to 'ログアウト' , destroy_customer_session_path, method: :delete, class: "btn btn-light" %></li>
               <% else %><!--ログインされていない-->
@@ -45,13 +46,6 @@
         </div>
       </nav>
 
-    <!--ログインしてたら、ようこそnameさん表示-->
-
-    <% if customer_signed_in? %>
-      <p class="header-comment">
-        <span>さん、ようこそ！</span>
-      </p>
-    <% end %>
 
     <!--できれば検索窓もつける-->
 
