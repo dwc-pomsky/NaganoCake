@@ -1,32 +1,27 @@
-<%= link_to "ログアウト", destroy_admin_session_path,method: :delete %>
-<h2 style="position:relative; top:10px; left:200px;">注文履歴一覧</h2>
-
-  <table align="center" border="1px solid ">
-    <tr>
-      <th>購入日時</th>
-      <th>購入者</th>
-      <th>注文個数</th>
-      <th>注文ステータス</th>
-    </tr>
-    <!-- %= @oders.each do |oder| %>-->
-    <tr>
-      <th>(例)2022/01/17 12:00<br>
-      <!-- %= oder.created_at.strftime('%Y/%m/%d') %>-->
-      </th>
-      <th>(例)Pomskya<br>
-      <!--%= oders.customers.last_name %> %= oders.customers.first_name %>--></th>
-      <th>(例)3<br>
-      <!--%= oders.oder_items--></th>
-      <th>(例)入金待ち</th>
-    </tr>
-  </table>
-  
-
-<!-- ページネーション追加後、以下記述は消します -->
-<div align="center">
-  <td>1</td>
-  <td>2</td>
-  <td>3</td>
-  <td>Next ></td>
-  <td>Last >></td>
+<div class="container">
+  <div class="row">
+    <h2 class=" bg-light px-4">注文履歴一覧</h2>
+  </div>
+  <div class="row mt-4">
+    <table class="table">
+      <thead class="bg-light">
+        <tr>
+          <th>購入日時</th>
+          <th>購入者</th>
+          <th>注文個数</th>
+          <th>注文ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%#= @orders.each do |oder| %>
+          <tr>
+            <td>(例)2022/01/17 12:00<%#= link_to order.created_at.strftime('%Y/%m/%d %H:%M'), admin_order_path(order) %></td>
+            <td>(例)Pomsky<%#= order.customers.last_name %> <%#= order.customers.first_name %></td>
+            <td>(例)3<%#= orders.order_items.quantity %></td>
+            <td>(例)入金待ち<%#= orders.order_status %></td>
+          </tr>
+        <%# end %>
+      </tbody>
+    </table>
+  </div>
 </div>
