@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :orders, module: :public, :only => [:new,:create,:index,:show]do
+  resources :orders, module: :public, :only => [:new,:create,:index,:show] do
     collection do
       post 'confirm'
       get 'complete'
