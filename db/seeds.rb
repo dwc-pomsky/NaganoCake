@@ -48,3 +48,7 @@ CartItem.create!(
   customer_id: '1',
   amount: '1'
 )
+
+#反映させる時は以下のコマンドを使用する（既存のデータは削除されます。）
+#$ rails db:migrate:reset
+#$ rails db:seed
