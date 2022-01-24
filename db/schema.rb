@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2022_01_21_094154) do
 
   create_table "admins", force: :cascade do |t|
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_094154) do
     t.datetime "updated_at", null: false
     t.integer "genre_id"
   end
+
 
   create_table "order_items", force: :cascade do |t|
     t.integer "order_id"

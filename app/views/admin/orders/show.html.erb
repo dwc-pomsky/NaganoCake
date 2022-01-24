@@ -1,14 +1,19 @@
 <div class="container">
   <div class="row">
-    <h2>注文履歴詳細</h2>
+    <h2 class="bg-light px-4">注文履歴詳細</h2>
   </div>
-  <div class="row">
-    <div class="col">
-      <tbody>
-        <table>
+  <div class="row mt-3">
+    <div class="col-sm-9">
+      <table class="table table-borderless">
+        <tbody>
           <tr>
             <td>購入者</td>
-            <td><%= @order.last_name %> <%= @order.first_name %></td>
+            <td>
+              <%= link_to admin_customer_path(@order.customer) do %>
+                <%= @order.last_name %>
+                <%= @order.first_name %>
+              <% end %>
+            </td>
           </tr>
 
           <tr>
@@ -19,8 +24,7 @@
           <tr>
             <td>配送先</td>
             <td>
-              〒<%= @order.delivery_postcode %>
-              <%= @order.delivery_addresses %><br>
+              <%= "〒" + @order.delivery_postcode + " " + @order.delivery_addresses %><br>
               <%= @order.delivery_name %>
             </td>
           </tr>
@@ -40,16 +44,16 @@
               <% end %>
             </td>
           </tr>
-        </table>
-      </tbody>
+        </tbody>
+      </table>
     </div>
   </div>
 
   <div class="row">
-    <div class="col">
-      <table>
+    <div class="col-sm-8">
+      <table class="table">
 
-        <thead>
+        <thead class="bg-light">
           <tr>
             <th>商品名</th>
             <th>単価(税込)</th>
@@ -60,37 +64,64 @@
         </thead>
 
         <tbody>
-          <% @order_items.each do |order_item| %>
+          <%# @order_items.each do |order_item| %>
             <tr>
-              <td><%= order_item.item.name %></td>
-              <td><%= add_tax_price(order_item.item.price) %></td>
-              <td><%= order_item.quantity %></td>
-              <td><%= order_item.purchase %></td>
+              <td>洋梨のチーズタルト<%#= order_item.item.name %></td>
+              <td>1,320<%#= (order_item.price_on_purchase * 1.1).floor.to_s(:dalimited) %></td>
+              <td>1<%#= order_item.quantity %></td>
+              <td>1,320<%#= (order_item.price_on_purchase * order_item.quantity * 1.1).floor.to_s(:dalimited) %></td>
 
-              <%= form_with model: order_item, admin_order_item_path(order_item),method: :patch do |f| %>
-                <td><%= f.select :production_status, options_from_collection_for_select(OrderItem.all, :id, :production_status) %></td>
-                <td><%= f.submit "更新" %></td>
-              <% end %>
+              <%#= form_with model: order_item, admin_order_item_path(order_item),method: :patch do |f| %>
+                <td>着手不可<%#= f.select :production_status, options_from_collection_for_select(OrderItem.all, :id, :production_status) %></td>
+                <td>更新<%#= f.submit "更新", class="btn btn-success" %></td>
+              <%# end %>
             </tr>
-          <% end %>
+            <tr>
+              <td>なめらかプリン</td>
+              <td>220</td>
+              <td>5</td>
+              <td>1,100</td>
+
+
+                <td>着手不可</td>
+                <td>更新</td>
+            </tr>
+            <tr>
+              <td>特製ガトーショコラ</td>
+              <td>2,750</td>
+              <td>1</td>
+              <td>2,750</td>
+
+                <td>着手不可</td>
+                <td>更新</td>
+            </tr>
+            <tr>
+              <td>マカロンセット</td>
+              <td>1,320</td>
+              <td>1</td>
+              <td>1,320</td>
+
+                <td>着手不可></td>
+                <td>更新</td>
+            </tr>
+          <% #end %>
         </tbody>
       </table>
     </div>
-
-    <div class="col">
-      <table>
+    <div class="col-sm-4">
+      <table class="table table-borderless align-self-end">
         <tbody>
           <tr>
-            <td>商品合計</td>
-            <td><%= @order_items.purchase %></td>
+            <td class="font-weight-bold">商品合計</td>
+            <td>6490<%#= (@order.total_price - @order.shipping_fee).to_s(dalimited) %>円</td>
           </tr>
           <tr>
-            <td>送料</td>
-            <td><%= @order.shipping_fee %></td>
+            <td class="font-weight-bold">送料</td>
+            <td>800<%#= @order.shipping_fee %>円</td>
           </tr>
           <tr>
-            <td>請求合計金額</td>
-            <td><%= @order.total_price %></td>
+            <td class="font-weight-bold">請求合計金額</td>
+            <td class="font-weight-bold">7290<%#= @order.total_price.to_s(:dalimited) %>円</td>
           </tr>
         </tbody>
       </table>
