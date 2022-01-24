@@ -10,14 +10,17 @@ Rails.application.routes.draw do
 
   get '/items/:id' => 'public/items#show'
 
-  get '/admin/customers' => 'admin/customers#index'
-  get '/admin/customers/:id' => 'admin/customers#show'
-  get '/admin/customers/:id/edit' => 'admin/customers#edit'
-  patch '/admin/customers/:id' => 'admin/customers#update'
+  #get '/admin/customers' => 'admin/customers#index'
+  #get '/admin/customers/:id' => 'admin/customers#show'
+  #get '/admin/customers/:id/edit' => 'admin/customers#edit'
+  #patch '/admin/customers/:id' => 'admin/customers#update'
 
   namespace :admin do
     resources :items
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :order_items, only: [:update]
+    resources :order, only:[:show, :update]
   end
 
 
@@ -41,7 +44,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :orders, module: :public, :only => [:new,:create,:index,:show]do
+  resources :orders, module: :public, :only => [:new,:create,:index,:show] do
     collection do
       post 'confirm'
       get 'complete'
