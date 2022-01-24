@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2022_01_21_094154) do
 
   create_table "admins", force: :cascade do |t|
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_094154) do
     t.integer "genre_id"
   end
 
+
   create_table "order_items", force: :cascade do |t|
     t.integer "order_id"
     t.integer "item_id"
@@ -89,7 +91,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_094154) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customers_id", null: false
+    t.integer "customer_id", null: false
     t.integer "shipping_fee", null: false
     t.integer "total_price", null: false
     t.integer "payment", default: 0, null: false

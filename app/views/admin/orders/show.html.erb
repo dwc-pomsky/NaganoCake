@@ -1,0 +1,130 @@
+<div class="container">
+  <div class="row">
+    <h2 class="bg-light px-4">注文履歴詳細</h2>
+  </div>
+  <div class="row mt-3">
+    <div class="col-sm-9">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>購入者</td>
+            <td>
+              <%= link_to admin_customer_path(@order.customer) do %>
+                <%= @order.last_name %>
+                <%= @order.first_name %>
+              <% end %>
+            </td>
+          </tr>
+
+          <tr>
+            <td>注文日</td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+
+          <tr>
+            <td>配送先</td>
+            <td>
+              <%= "〒" + @order.delivery_postcode + " " + @order.delivery_addresses %><br>
+              <%= @order.delivery_name %>
+            </td>
+          </tr>
+
+          <tr>
+            <td>支払い方法</td>
+            <td><%= @order.payment %></td>
+          </tr>
+
+          <tr>
+            <td>注文ステータス</td>
+            <td>
+              <%= form_with model: @order, url: admin_order_path(@order), method: :patch do |f| %>
+              <!-- f.select :プロパティ名, options_from_collection_for_select(モデル, :フォームで送る値(メソッド), :セレクトボックスに表示する値(メソッド)) -->
+                <%= f.select :order_status, options_from_collection_for_select(Oder.all, :id, :order_status) %>
+                <%= f.submit "更新", class: "btn btn-success" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <table class="table">
+
+        <thead class="bg-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%# @order_items.each do |order_item| %>
+            <tr>
+              <td>洋梨のチーズタルト<%#= order_item.item.name %></td>
+              <td>1,320<%#= (order_item.price_on_purchase * 1.1).floor.to_s(:dalimited) %></td>
+              <td>1<%#= order_item.quantity %></td>
+              <td>1,320<%#= (order_item.price_on_purchase * order_item.quantity * 1.1).floor.to_s(:dalimited) %></td>
+
+              <%#= form_with model: order_item, admin_order_item_path(order_item),method: :patch do |f| %>
+                <td>着手不可<%#= f.select :production_status, options_from_collection_for_select(OrderItem.all, :id, :production_status) %></td>
+                <td>更新<%#= f.submit "更新", class="btn btn-success" %></td>
+              <%# end %>
+            </tr>
+            <tr>
+              <td>なめらかプリン</td>
+              <td>220</td>
+              <td>5</td>
+              <td>1,100</td>
+
+
+                <td>着手不可</td>
+                <td>更新</td>
+            </tr>
+            <tr>
+              <td>特製ガトーショコラ</td>
+              <td>2,750</td>
+              <td>1</td>
+              <td>2,750</td>
+
+                <td>着手不可</td>
+                <td>更新</td>
+            </tr>
+            <tr>
+              <td>マカロンセット</td>
+              <td>1,320</td>
+              <td>1</td>
+              <td>1,320</td>
+
+                <td>着手不可></td>
+                <td>更新</td>
+            </tr>
+          <% #end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4">
+      <table class="table table-borderless align-self-end">
+        <tbody>
+          <tr>
+            <td class="font-weight-bold">商品合計</td>
+            <td>6490<%#= (@order.total_price - @order.shipping_fee).to_s(dalimited) %>円</td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold">送料</td>
+            <td>800<%#= @order.shipping_fee %>円</td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold">請求合計金額</td>
+            <td class="font-weight-bold">7290<%#= @order.total_price.to_s(:dalimited) %>円</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
