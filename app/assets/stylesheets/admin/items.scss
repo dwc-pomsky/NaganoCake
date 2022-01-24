@@ -1,17 +1,22 @@
 // Place all the styles related to the admin/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.btn {
+main {
+  background-color: #e4ff6d;
+  background-image: linear-gradient(319deg, #e4ff6d 0%, #ffad42 37%, #e4ff6d 100%);
+}
+.pulus-btn {
   border-radius: 100%;
+  background-color: #f9484a;
+  background-image: linear-gradient(315deg, #f9484a 0%, #fbd72b 74%);
 }
 
 .item-link {
   // transition: 2s;
-  color: gray;
+  color: black;
 
   padding: 0 10px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgba(215, 26, 183,0.22) 50%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgba(237, 109, 209,0.64) 50%);
   background-position: 0 0; //0 50ならば下に50%、50 50 ならば右に50%下に50%が初期位置になる
   background-size: 200% auto;
   transition: 0.3s; // transition・・・状態が変わった時に起こす指示
@@ -22,13 +27,8 @@
   color: #fff;
 }
 
-.pulus-btn {
-  padding: 20px;
-}
 
-.item-edit {
-  margin: 50px 20px 20px 150px;
-  padding-right: 20px;
-  padding-left: 20px;
-  background-color: #80808047;
+.table {
+background-color: #e4ff6d;
+background-image: linear-gradient(319deg, #e4ff6d 0%, #ffad42 37%, #e4ff6d 100%);
 }
