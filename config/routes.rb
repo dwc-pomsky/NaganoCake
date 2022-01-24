@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   devise_for :admin, skip:[:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-  get 'admin' => 'admin/homes#top' 
+  get 'admin' => 'admin/homes#top'
 
-  get '/items' => 'public/items#index' 
+  get '/items' => 'public/items#index'
 
   get '/items/:id' => 'public/items#show' , as: 'item'
 
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :order_items, only: [:update]
-    resources :order, only:[:show, :update]
+    resources :orders, only:[:show, :update]
   end
 
 

@@ -13,14 +13,21 @@
         </tr>
       </thead>
       <tbody>
-        <%#= @orders.each do |oder| %>
+
+        <% @orders.each do |order| %>
           <tr>
-            <td>(例)2022/01/17 12:00<%#= link_to order.created_at.strftime('%Y/%m/%d %H:%M'), admin_order_path(order) %></td>
-            <td>(例)Pomsky<%#= order.customers.last_name %> <%#= order.customers.first_name %></td>
-            <td>(例)3<%#= orders.order_items.quantity %></td>
-            <td>(例)入金待ち<%#= orders.order_status %></td>
+            <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
+            <td><%= order.customer.last_name %> <%= order.customer.first_name %></td>
+            <td>
+              <% order_items = OrderItem.where(order_id: order) %>
+              <% order_items.each do |item| %>
+                <%  @sum += item.quantity %>
+              <% end %>
+              <%= @sum %>
+            </td>
+            <td><%= order.order_status %></td>
           </tr>
-        <%# end %>
+        <% end %>
       </tbody>
     </table>
   </div>
