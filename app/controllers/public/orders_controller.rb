@@ -12,10 +12,9 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.save
-
     @cart_items = CartItem.where(customer_id: current_customer)
     if @cart_items.exists?
+      @order.save
       @cart_items.each do |item|
         OrderItem.create(
           order_id: @order.id,
