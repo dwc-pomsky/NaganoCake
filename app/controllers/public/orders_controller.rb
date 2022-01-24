@@ -1,4 +1,7 @@
 class Public::OrdersController < ApplicationController
+
+  before_action :ensure_correct_customer
+
   def index
     @orders = Order.where(customer_id: current_customer)
   end
@@ -66,5 +69,13 @@ class Public::OrdersController < ApplicationController
 
   def order_params
       params.require(:order).permit(:customer_id, :shipping_fee, :order_status, :total_price, :payment, :delivery_postcode, :delivery_address, :delivery_name)
+  end
+
+  def ensure_correct_customer
+    #current_customerが取得できない場合
+    if current_customer == nil
+      #ログイン画面に飛ばす
+      redirect_to new_customer_session_path
+    end
   end
 end
