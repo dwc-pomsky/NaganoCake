@@ -1,14 +1,18 @@
-<!--部分テンプレートの呼び出し(サイドバー)-->
+<div class="container">
 
-<h1>商品一覧</h1>
-<p>(全count件)</p>
+  <div class="row top">
+    <h1 class="font-weight-bold">商品一覧 </h1>
+    <p class="count align-self-end"> (全<%= @item.count %>件)</p>
+  </div>
+  <div class="row bottom mt-5">
+    <% @items.each do |item| %>
+      <div class="col">
+        <p><%= attachment_image_tag item,:image,:fill, 250, 125 %></p>
+        <p class="font-weight-bold"><%= link_to item.name, item_path(item.id), class: "item_#{item.id}" %></p>
+        <p class="font-weight-bold">¥<%= item.price %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<!--<"% items.each do |item| %>-->
-  
-  <!--<#%= attachment_image_tag(item.image_id , :fill, 40, 60 ) %>-->
-  <!--<#%= link_to item.name, item_path(item) , class: "item_#{item.id}" %>-->
-  <!--<%#= item.price %>-->
-  
-<!--<#% end %>-->
-
-<!--paginate(kaminari)-->
+<div class="paginate"><%= paginate @items %></div>
