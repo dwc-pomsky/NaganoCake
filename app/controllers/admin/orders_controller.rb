@@ -26,7 +26,6 @@ class Admin::OrdersController < ApplicationController
   end
 
   private
-
   def order_params
     params.require(:oder).permit(:order_status)
   end

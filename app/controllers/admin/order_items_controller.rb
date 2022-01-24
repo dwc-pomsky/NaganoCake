@@ -1,6 +1,5 @@
 class Admin::OrderItemsController < ApplicationController
   before_action :authenticate_admin!
-
   def update
       @order_item = OrderItems.find(params[:id])
       @order = @order_item.order
@@ -27,7 +26,6 @@ class Admin::OrderItemsController < ApplicationController
   end
 
   private
-
   def order_items_params
       params.require(:order_items).permit(:production_status)
   end

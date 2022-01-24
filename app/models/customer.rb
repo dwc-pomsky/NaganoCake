@@ -11,6 +11,12 @@ class Customer < ApplicationRecord
   #has_one :cart_items
 
   #customerがcart_itemの所有者
-  has_many :cart_item, dependent: :destroy
-  has_many :order, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
+  #customerがordersの所有者
+  has_many :orders, dependent: :destroy
+
+  def full_my_address
+    '〒' + post_code + ' ' + address
+  end
+  #enum is_deleted: { 有効: false, 退会: true }
 end

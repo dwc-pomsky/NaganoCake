@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+  before_action :ensure_correct_customer
+
   def index
     #会員idがログイン中のユーザーidのレコードを全て取得する
     @cart_items = CartItem.where(customer_id: current_customer)
@@ -58,4 +60,11 @@ class Public::CartItemsController < ApplicationController
     params.require(:cart_item).permit(:item_id, :customer_id, :amount)
   end
 
+  def ensure_correct_customer
+    #current_customerが取得できない場合
+    if current_customer == nil
+      #ログイン画面に飛ばす
+      redirect_to new_customer_session_path
+    end
+  end
 end
