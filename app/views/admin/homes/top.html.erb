@@ -15,7 +15,7 @@
       <tbody>
         <%#= @orders.each do |oder| %>
           <tr>
-            <td>(例)2022/01/17 12:00<%#= link_to order.created_at.strftime('%Y/%m/%d %H:%M'), admin_order_path(order) %></td>
+            <td>(例)2022/01/17 12:00<%#= link_to order.created_at.strftime('%Y/%m/%d %H:%M'), admin_order_path(order.id) %></td>
             <td>(例)Pomsky<%#= order.customers.last_name %> <%#= order.customers.first_name %></td>
             <td>(例)3<%#= orders.order_items.quantity %></td>
             <td>(例)入金待ち<%#= orders.order_status %></td>
