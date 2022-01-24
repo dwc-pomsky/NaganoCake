@@ -79,7 +79,6 @@ ActiveRecord::Schema.define(version: 2022_01_21_094154) do
     t.integer "genre_id"
   end
 
-
   create_table "order_items", force: :cascade do |t|
     t.integer "order_id"
     t.integer "item_id"
