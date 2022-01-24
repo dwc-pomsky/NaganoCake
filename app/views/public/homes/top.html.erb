@@ -1,11 +1,27 @@
-<!--左のサイドバーにジャンル検索、部分テンプレート？商品一覧にもあった-->
-
-
-<!--メインの上に紹介文-->
-<p>ようこそ、ながのCAKEへ！<br>
-このサイトは、ケーキ販売のECサイトになります。<br>
-会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。</p>
-
-<!--メインの下に新着商品の紹介(応用課題でやった順番の並び替えを使う？)-->
-<p>商品名</p>
-<p>¥0,000</p>
+<div class='container'>
+  <div class='row'>
+    <div class="main-visual shadow">
+      <div class="main-visual-text">
+        <div class="text">ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+   <h1 class="font-weight-bold">新着商品</h1>
+  </div>
+  <div class="row mt-4">
+    <% @items.each do |item| %>
+     <div class="col">
+      <!--画像が表示されない-->
+      <p><%= attachment_image_tag item, :image, :fill, 250, 125, format:'jpeg' %></p>
+      <p class="font-weight-bold"><%= item.name %></p>
+      <p class="font-weight-bold">¥<%= item.price %></p>
+     </div>
+    <% end %>
+  </div>
+  <!--後で遷移先を商品一覧に変える-->
+  <p class="text-right h4"><%= link_to '全ての商品をみる >' , items_path %></p>
+</div>

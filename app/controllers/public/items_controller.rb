@@ -6,12 +6,8 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-  end
-
-  private
-
-  def item_params
-    params.require(:item).permit(:title,:price)
+    #カートに追加するため
+    @cart_items = CartItem.new
   end
 
 end

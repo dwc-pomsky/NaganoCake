@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   }
   get 'admin' => 'admin/homes#top'
 
-  get '/items' => 'items#index'
+  get '/items' => 'public/items#index'
 
-  get '/items/:id' => 'items#show'
+  get '/items/:id' => 'public/items#show'
 
   get '/admin/customers' => 'admin/customers#index'
   get '/admin/customers/:id' => 'admin/customers#show'
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :items
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
 
 
@@ -35,6 +36,11 @@ Rails.application.routes.draw do
   get '/about' => 'public/homes#about'
 
   resources :delivery_addresses, module: :public, :except => [:new, :show]
+  resources :cart_items, module: :public, :except => [:new, :show, :edit] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
