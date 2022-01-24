@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   devise_for :admin, skip:[:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-  get 'admin' => 'admin/homes#top' 
+  get 'admin' => 'admin/homes#top'
 
-  get '/items' => 'public/items#index' 
+  get '/items' => 'public/items#index'
 
   get '/items/:id' => 'public/items#show' , as: 'item'
 
