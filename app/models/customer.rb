@@ -18,4 +18,5 @@ class Customer < ApplicationRecord
   def full_my_address
     '〒' + post_code + ' ' + address
   end
+  #enum is_deleted: { 有効: false, 退会: true }
 end
