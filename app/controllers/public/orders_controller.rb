@@ -15,25 +15,30 @@ class Public::OrdersController < ApplicationController
     @order.save
 
     @cart_items = CartItem.where(customer_id: current_customer)
-    @cart_items.each do |item|
-      OrderItem.create(
-        order_id: @order.id,
-        item_id: item.item.id,
-        price_on_purchase: item.item.price,
-        quantity: item.amount
-      )
+    if @cart_items.exists?
+      @cart_items.each do |item|
+        OrderItem.create(
+          order_id: @order.id,
+          item_id: item.item.id,
+          price_on_purchase: item.item.price,
+          quantity: item.amount
+        )
+      end
+      CartItem.where(customer_id: current_customer).destroy_all
+      redirect_to complete_orders_path
+    else
+      redirect_to cart_items_path
     end
-    CartItem.where(customer_id: current_customer).destroy_all
-    redirect_to complete_orders_path
   end
 
   def show
     if params[:id] == 'confirm'
       redirect_to new_order_path
+    else
+      @order = Order.find(params[:id])
+      @order_item = OrderItem.where(order_id: @order)
+      @itemtotal = 0
     end
-    @order = Order.find(params[:id])
-    @order_item = OrderItem.where(order_id: @order)
-    @itemtotal = 0
     #binding.pry
   end
 
