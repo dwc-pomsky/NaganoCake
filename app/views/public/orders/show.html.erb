@@ -54,9 +54,9 @@
         <% @order_item.each do |item| %>
           <tr>
             <td><%= item.item.name %></td>
-            <td><%= (item.price_on_purchase * 1.10).round %></td>
+            <td><%= item.add_tax_price_on_purchase.to_s(:delimited) %></td>
             <td><%= item.quantity %></td>
-            <td><%= (item.quantity * item.price_on_purchase * 1.10).round %></td>
+            <td><%= (item.quantity * item.add_tax_price_on_purchase).to_s(:delimited) %></td>
           </tr>
         <% end %>
       </tbody>
