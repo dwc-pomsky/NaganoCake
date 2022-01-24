@@ -1,0 +1,29 @@
+// Place all the styles related to the public/items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.paginate{
+  display:flex;
+  justify-content:center;
+  margin-top:20px;
+}
+
+.row.top{
+  margin-top:90px;
+}
+
+.form-group.row{
+  margin-top:90px;
+  display:flex;
+  justify-content:center;
+}
+
+.col.show{
+  width:304px;
+}
+
+
+.h1{
+  text-size:50px;
+}
+
+

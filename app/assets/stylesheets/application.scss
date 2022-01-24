@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+
+.copy{
+  border-top:1px solid;
+  text-align:center;
+  padding-top:25px;
+}
