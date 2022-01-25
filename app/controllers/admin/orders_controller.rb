@@ -14,11 +14,8 @@ class Admin::OrdersController < ApplicationController
       if @order.order_status == "入金確認"
         #　紐付く注文ステータスが入金確認になったら
         @orders_items.each do |order_item|
-        # 注文商品の各商品の
-          order_item.production_status = "制作待ち"
-          # 制作ステータスを制作待ちにして
-          order_item.save
-          # 保存する
+        # 注文商品の各商品の制作ステータスを制作待ちにして更新
+          order_item.update(production_status: 1)
         end
       end
     redirect_to admin_order_path(@order)
