@@ -17,7 +17,7 @@
 <!--ここで、ディスプレイサイズの指定と背景色の指定-->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-         <a class="logo" href="/">ながのCAKE<%#= image_tag('logoimage') %></a>
+         <%= image_tag 'header-image.jpeg', size: '140x80' %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -55,7 +55,7 @@
   <main style="margin-bottom:100px">
     <%= yield %>
   </main>
-    
+
   <footer class='fixed-bottom'>
       <p class="copy">©︎NaganoCake</p>
 
