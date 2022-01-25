@@ -38,7 +38,12 @@
 
   <div class='row'>
     <p class='col-md-2'>会員ステータス</p>
-    <p class="col-md-2 text-success font-weight-bold"><%= @customer.is_deleted %></p>
+      <% if @customer.is_deleted == true %>
+       <p class="col-md-2 text-secondary font-weight-bold">退会</p>
+      <% else %>
+       <p class="col-md-2 text-success font-weight-bold">有効</p>
+      <% end %>
+    </p>
   </div>
 
   <div class='row'>
