@@ -6,7 +6,7 @@ class Public::DeliveryAddressesController < ApplicationController
     #新規登録用のインスタンス変数
     @new_delivery_address = DeliveryAddress.new
     #登録されている配送先の取得
-    @delivery_addresses = DeliveryAddress.all
+    @delivery_addresses = DeliveryAddress.where(customer_id: current_customer)
   end
 
   def create
@@ -20,7 +20,7 @@ class Public::DeliveryAddressesController < ApplicationController
       redirect_back(fallback_location:root_path)
     else
       #保存できなかった場合は配送先テーブルを取得し、indexを表示する
-      @delivery_addresses = DeliveryAddress.all
+      @delivery_addresses = DeliveryAddress.where(customer_id: current_customer)
       render 'index'
     end
   end
