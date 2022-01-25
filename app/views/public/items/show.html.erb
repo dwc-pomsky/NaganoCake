@@ -1,10 +1,10 @@
-<div class="container">
-  <div class='form-group row'>
-    <div class="col-5">
+<div class="container m-5">
+  <div class='row d-flex justify-content-center'>
+    <div class="col-auto">
       <%= attachment_image_tag @item,:image,:fill, 400, 230, format: 'jpeg' %>
     </div>
 
-    <div class='row'>
+    <div class='col-auto'>
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -32,7 +32,6 @@
           </tr>
         </tbody>
       </table>
-
     </div>
   </div>
 </div>
