@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container mb-5 mt-5">
   <div class="row">
-    <h2 class="bg-light px-4">注文履歴詳細</h2>
+    <h2 class="bg-light px-4 ml-">注文履歴詳細</h2>
   </div>
   <div class="row mt-3">
     <div class="col-sm-9">
@@ -71,7 +71,7 @@
               <td><%= order_item.quantity %></td>
               <td><%= (order_item.add_tax_price_on_purchase * order_item.quantity.floor).to_s(:delimited) %></td>
 
-              <%= form_with model:order_item, url:admin_order_item_path(order_item),method: :patch, local: true do |f| %>
+              <%= form_with model:order_item, url:admin_order_item_path(order_item.id),method: :patch, local: true do |f| %>
                 <td><%= f.select :production_status, OrderItem.production_statuses.keys %></td>
                 <td><%= f.submit "更新", class: "btn btn-success" %></td>
               <% end %>
@@ -82,7 +82,7 @@
       </table>
     </div>
     <div class="col-sm-4">
-      <table class="table table-borderless align-self-end">
+      <table class="table table-borderless">
         <tbody>
           <tr>
             <td class="font-weight-bold">商品合計</td>

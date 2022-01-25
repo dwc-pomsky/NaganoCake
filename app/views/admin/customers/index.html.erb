@@ -20,7 +20,13 @@
            <td><%= customer.id %></td>
            <td><%= link_to customer.last_name + customer.first_name , admin_customer_path(customer) %></td>
            <td><%= customer.email %></td>
-           <td><%= customer.is_deleted %></td>
+           <td>
+            <% if customer.is_deleted == true %>
+             <p class="col-md-auto text-secondary font-weight-bold">退会</p>
+            <% else %>
+             <p class="col-md-auto text-success font-weight-bold">有効</p>
+            <% end %>
+           </td>
          </tr>
         <% end %>
 
