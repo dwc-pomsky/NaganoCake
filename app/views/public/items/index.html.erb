@@ -6,7 +6,7 @@
   </div>
   <div class="row bottom mt-5">
     <% @items.each do |item| %>
-      <div class="col">
+      <div class="flex-start ml-3">
         <p><%= attachment_image_tag item,:image,:fill, 250, 125 %></p>
         <p class="font-weight-bold"><%= link_to item.name, item_path(item.id), class: "item_#{item.id}" %></p>
         <p class="font-weight-bold">¥<%= item.price %></p>
