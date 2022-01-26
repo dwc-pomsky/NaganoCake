@@ -52,7 +52,7 @@ class Public::OrdersController < ApplicationController
       @order.delivery_name = current_customer.last_name + current_customer.first_name
     #既存の住所を選んだ時
     elsif @select_address == '1'
-      if params[:delivery_address_id].presence
+      if params[:order][:delivery_address_id].presence
         @address = DeliveryAddress.find(params[:order][:delivery_address_id])
         @order.delivery_postcode = @address.post_code
         @order.delivery_address = @address.address
