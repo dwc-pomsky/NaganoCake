@@ -1,6 +1,6 @@
 <div class="container mb-5">
   <div class="row">
-    <h2 class="mx-5 mt-5  px-4">商品新規登録</h2>
+    <h2 class="mx-5 mt-5  px-4 shadow bg-light">商品新規登録</h2>
   </div>
 
   <div class="row justify-content-center bg-color pt-3">
@@ -29,7 +29,7 @@
       <div class="col-auto"><%= f.label :"販売ステータス", class: 'col-form-label' %></div>
       <div class="col-auto form-check-inline">
          <%= f.radio_button :sales_status, true, class: 'form-check-input' %>
-         <%= f.label :"販売中", class: 'form-check-label' %> 
+         <%= f.label :"販売中", class: 'form-check-label' %>
          <%= f.radio_button :sales_status, false, class: 'form-check-input' %>
          <%= f.label :"販売停止中", class: "form-check-label" %>
       </div>
@@ -38,7 +38,7 @@
       <div class="col-auto">
         <%= f.submit "新規登録",class: 'btn btn-success' %>
       </div>
-    </div>  
+    </div>
   <% end %>
   </div>
 </div>
