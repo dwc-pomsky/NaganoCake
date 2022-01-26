@@ -1,11 +1,11 @@
-<div class="container mb-t">
+<div class="container m-5">
   <div class="row mt-5">
-    <h2 class="ml-5 px-4 bg-light">商品詳細</h2>
+    <h2 class="ml-5 px-4 bg-light shadow">商品詳細</h2>
   </div>
 
   <div class="row mt-5">
     <div class="col">
-    <%= attachment_image_tag @item, :image, :fill, 400, 350, format:'jpeg' %>
+    <%= attachment_image_tag @item, :image, :fill, 400, 350, format:'jpeg', class: "float-right" %>
     </div>
 
     <div class="col">

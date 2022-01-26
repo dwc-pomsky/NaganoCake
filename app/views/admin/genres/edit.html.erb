@@ -1,6 +1,6 @@
 <div class="container mb-5">
   <div class="row">
-    <h3 class="m-5 bg-light px-4">ジャンル編集</h3>
+    <h3 class="m-5 bg-light px-4 shadow">ジャンル編集</h3>
   </div>
 
   <%= form_with model: @genre, url: admin_genre_path(@genre.id),method: :patch, local: true do |f| %>
