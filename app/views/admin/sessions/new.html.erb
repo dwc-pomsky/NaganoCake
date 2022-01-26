@@ -3,14 +3,14 @@
 
      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class='form-group row justify-content-md-center mt-5'>
-      <%= f.label :email, class: 'col-md-2 col-form-label' %>
+      <%= f.label :"ログイン", class: 'col-md-2 col-form-label' %>
       <div class='col-md-5'>
         <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", autocomplete: "email", class:'form-control' %>
       </div>
     </div>
 
     <div class='form-group row justify-content-md-center'>
-      <%= f.label :password, class: 'col-md-2 col-form-label' %>
+      <%= f.label :"パスワード", class: 'col-md-2 col-form-label' %>
       <div class='col-md-5'>
         <%= f.password_field :password, autocomplete: "current-password", class:'form-control' %>
       </div>
