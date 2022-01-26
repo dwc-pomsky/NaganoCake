@@ -15,5 +15,12 @@ module NaganoCake
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    #　日本語に対応されるための記述
+    config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/*.yml').to_s]
+
+    config.time_zone = 'Tokyo'
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
   end
 end
